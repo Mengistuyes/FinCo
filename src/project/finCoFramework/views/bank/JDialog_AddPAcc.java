@@ -1,12 +1,11 @@
-package project.bank;
-/**
+package project.finCoFramework.views.bank; /**
 		A basic implementation of the JDialog class.
 **/
 
 import java.awt.*;
 import javax.swing.*;
 
-public class JDialog_AddPAcc extends javax.swing.JDialog
+public class JDialog_AddPAcc extends JDialog
 {
     private BankFrm parentframe;
     
@@ -36,31 +35,31 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		JRadioButton_Sav.setBounds(36,24,84,24);
 		JLabel1.setText("Name");
 		getContentPane().add(JLabel1);
-		JLabel1.setForeground(java.awt.Color.black);
+		JLabel1.setForeground(Color.black);
 		JLabel1.setBounds(12,84,48,24);
 		JLabel2.setText("Street");
 		getContentPane().add(JLabel2);
-		JLabel2.setForeground(java.awt.Color.black);
+		JLabel2.setForeground(Color.black);
 		JLabel2.setBounds(12,108,48,24);
 		JLabel3.setText("City");
 		getContentPane().add(JLabel3);
-		JLabel3.setForeground(java.awt.Color.black);
+		JLabel3.setForeground(Color.black);
 		JLabel3.setBounds(12,132,48,24);
 		JLabel4.setText("State");
 		getContentPane().add(JLabel4);
-		JLabel4.setForeground(java.awt.Color.black);
+		JLabel4.setForeground(Color.black);
 		JLabel4.setBounds(12,156,48,24);
 		JLabel5.setText("Zip");
 		getContentPane().add(JLabel5);
-		JLabel5.setForeground(java.awt.Color.black);
+		JLabel5.setForeground(Color.black);
 		JLabel5.setBounds(12,180,48,24);
 		JLabel6.setText("Birthdate");
 		getContentPane().add(JLabel6);
-		JLabel6.setForeground(java.awt.Color.black);
+		JLabel6.setForeground(Color.black);
 		JLabel6.setBounds(12,204,96,24);
 		JLabel7.setText("Email");
 		getContentPane().add(JLabel7);
-		JLabel7.setForeground(java.awt.Color.black);
+		JLabel7.setForeground(Color.black);
 		JLabel7.setBounds(12,228,48,24);
 		getContentPane().add(JTextField_NAME);
 		JTextField_NAME.setBounds(84,84,156,20);
@@ -88,7 +87,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		JTextField_ACNR.setBounds(84,60,156,20);
 		JLabel8.setText("Acc Nr");
 		getContentPane().add(JLabel8);
-		JLabel8.setForeground(java.awt.Color.black);
+		JLabel8.setForeground(Color.black);
 		JLabel8.setBounds(12,60,48,24);
 		//}}
 	
@@ -106,26 +105,26 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 
 
 	//{{DECLARE_CONTROLS
-	javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-	javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
-	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel4 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel5 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel6 = new javax.swing.JLabel();
-	javax.swing.JLabel JLabel7 = new javax.swing.JLabel();
-	javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_CT = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ST = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_STR = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_ZIP = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_BD = new javax.swing.JTextField();
-	javax.swing.JTextField JTextField_EM = new javax.swing.JTextField();
-	javax.swing.JButton JButton_OK = new javax.swing.JButton();
-	javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-	javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
-	javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
+	JRadioButton JRadioButton_Chk = new JRadioButton();
+	JRadioButton JRadioButton_Sav = new JRadioButton();
+	JLabel JLabel1 = new JLabel();
+	JLabel JLabel2 = new JLabel();
+	JLabel JLabel3 = new JLabel();
+	JLabel JLabel4 = new JLabel();
+	JLabel JLabel5 = new JLabel();
+	JLabel JLabel6 = new JLabel();
+	JLabel JLabel7 = new JLabel();
+	JTextField JTextField_NAME = new JTextField();
+	JTextField JTextField_CT = new JTextField();
+	JTextField JTextField_ST = new JTextField();
+	JTextField JTextField_STR = new JTextField();
+	JTextField JTextField_ZIP = new JTextField();
+	JTextField JTextField_BD = new JTextField();
+	JTextField JTextField_EM = new JTextField();
+	JButton JButton_OK = new JButton();
+	JButton JButton_Cancel = new JButton();
+	JTextField JTextField_ACNR = new JTextField();
+	JLabel JLabel8 = new JLabel();
 	//}}
 
 
@@ -178,7 +177,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
        parentframe.city=JTextField_CT.getText();
        parentframe.zip=JTextField_ZIP.getText();
        parentframe.state=JTextField_ST.getText();
-       parentframe.email=JTextField_EM.getText();
        if (JRadioButton_Chk.isSelected())
            parentframe.accountType="Ch";
            else

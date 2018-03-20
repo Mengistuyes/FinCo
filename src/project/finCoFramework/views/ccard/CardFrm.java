@@ -1,4 +1,4 @@
-package project.ccard;
+package project.finCoFramework.views.ccard;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,17 +9,17 @@ import javax.swing.*;
 /**
  * A basic JFC based application.
  **/
-public class CardFrm extends javax.swing.JFrame
+public class CardFrm extends JFrame
 {
     /****
      * init variables in the object
      ****/
-    String clientName,street,city, zip, state,accountType,amountDeposit,expdate, ccnumber;
+    public String clientName,street,city, zip, state,accountType,amountDeposit,expdate, ccnumber;
     boolean newaccount;
     private DefaultTableModel model;
     private JTable JTable1;
     private JScrollPane JScrollPane1;
-    CardFrm thisframe;
+    public CardFrm thisframe;
     private Object rowdata[];
     
 	public CardFrm()
@@ -27,7 +27,7 @@ public class CardFrm extends javax.swing.JFrame
 		thisframe=this;
 		
 		setTitle("Credit-card processing Application.");
-		setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout(0,0));
 		setSize(575,310);
 		setVisible(false);
@@ -117,12 +117,12 @@ public class CardFrm extends javax.swing.JFrame
 	}
 
 
-	javax.swing.JPanel JPanel1 = new javax.swing.JPanel();
-	javax.swing.JButton JButton_NewCCAccount = new javax.swing.JButton();
-	javax.swing.JButton JButton_GenBill = new javax.swing.JButton();
-	javax.swing.JButton JButton_Deposit = new javax.swing.JButton();
-	javax.swing.JButton JButton_Withdraw = new javax.swing.JButton();
-	javax.swing.JButton JButton_Exit = new javax.swing.JButton();
+	JPanel JPanel1 = new JPanel();
+	JButton JButton_NewCCAccount = new JButton();
+	JButton JButton_GenBill = new JButton();
+	JButton JButton_Deposit = new JButton();
+	JButton JButton_Withdraw = new JButton();
+	JButton JButton_Exit = new JButton();
 
 
 	void exitApplication()
@@ -137,7 +137,7 @@ public class CardFrm extends javax.swing.JFrame
 
 	class SymWindow extends java.awt.event.WindowAdapter
 	{
-		public void windowClosing(java.awt.event.WindowEvent event)
+		public void windowClosing(WindowEvent event)
 		{
 			Object object = event.getSource();
 			if (object == CardFrm.this)
@@ -145,14 +145,14 @@ public class CardFrm extends javax.swing.JFrame
 		}
 	}
 
-	void BankFrm_windowClosing(java.awt.event.WindowEvent event)
+	void BankFrm_windowClosing(WindowEvent event)
 	{
 		// to do: code goes here.
 			 
 		BankFrm_windowClosing_Interaction1(event);
 	}
 
-	void BankFrm_windowClosing_Interaction1(java.awt.event.WindowEvent event) {
+	void BankFrm_windowClosing_Interaction1(WindowEvent event) {
 		try {
 			this.exitApplication();
 		} catch (Exception e) {
@@ -161,7 +161,7 @@ public class CardFrm extends javax.swing.JFrame
 
 	class SymAction implements java.awt.event.ActionListener
 	{
-		public void actionPerformed(java.awt.event.ActionEvent event)
+		public void actionPerformed(ActionEvent event)
 		{
 			Object object = event.getSource();
 			if (object == JButton_Exit)
@@ -180,12 +180,12 @@ public class CardFrm extends javax.swing.JFrame
     
     //When the Exit button is pressed this code gets executed
     //this will exit from the system
-    void JButtonExit_actionPerformed(java.awt.event.ActionEvent event)
+    void JButtonExit_actionPerformed(ActionEvent event)
 	{
 		System.exit(0);
 	}
 
-	void JButtonNewCCAC_actionPerformed(java.awt.event.ActionEvent event)
+	void JButtonNewCCAC_actionPerformed(ActionEvent event)
 	{
 		/*
 		 JDialog_AddPAcc type object is for adding personal information
@@ -213,7 +213,7 @@ public class CardFrm extends javax.swing.JFrame
         
     }
 
-	void JButtonGenerateBill_actionPerformed(java.awt.event.ActionEvent event)
+	void JButtonGenerateBill_actionPerformed(ActionEvent event)
 	{
 		JDialogGenBill billFrm = new JDialogGenBill();
 		billFrm.setBounds(450, 20, 400, 350);
@@ -221,7 +221,7 @@ public class CardFrm extends javax.swing.JFrame
 	    
 	}
 
-	void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event)
+	void JButtonDeposit_actionPerformed(ActionEvent event)
 	{
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
@@ -244,7 +244,7 @@ public class CardFrm extends javax.swing.JFrame
 		
 	}
 
-	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
+	void JButtonWithdraw_actionPerformed(ActionEvent event)
 	{
 	    // get selected name
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();

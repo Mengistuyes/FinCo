@@ -9,6 +9,19 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
 import project.dao.fileDao;
+import project.finCoFramework.Account;
+import project.finCoFramework.Deposit;
+import project.finCoFramework.Entry;
+import project.finCoFramework.EntryContext;
+import project.finCoFramework.IAccount;
+import project.finCoFramework.IParty;
+import project.finCoFramework.IPerson;
+import project.finCoFramework.Organization;
+import project.finCoFramework.Party;
+import project.finCoFramework.PartyFactory;
+import project.finCoFramework.Person;
+import project.finCoFramework.Withdraw;
+import project.finCoFramework.addInterestFunctor;
 
 /**
  * A basic JFC based application.
@@ -18,14 +31,14 @@ public class BankFrm extends javax.swing.JFrame
     /****
      * init variables in the object
      ****/
-    String accountnr, clientName,street,city,zip,state,accountType,clientType,amountDeposit;
+    String accountnr,registeredDate, clientName,street,city,zip,state,accountType,clientType,amountDeposit;
     boolean newaccount;
     private DefaultTableModel model;
     private JTable JTable1;
     private JScrollPane JScrollPane1;
     BankFrm myframe;
     private Object rowdata[];
-    
+    private static Integer tempCustomerId=0;
 	public BankFrm()
 	{
 		myframe = this;
@@ -119,6 +132,9 @@ public class BankFrm extends javax.swing.JFrame
 		    
 			//Create a new instance of our application's frame, and make it visible.
 			(new BankFrm()).setVisible(true);
+			java.util.List<Account> accounts =fileDao.getAllAccounts();
+			java.util.List<Party> party =fileDao.getAllParty();
+			
 		} 
 		catch (Throwable t) {
 			t.printStackTrace();
@@ -210,30 +226,30 @@ public class BankFrm extends javax.swing.JFrame
 		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
-		Date d=new Date();
+	//	Date d=new Date();
 		
-		partyFactory
-		PersonInfo p=new PersonInfo(1,"03/18/2018",clientName,street,city,state,zip,email);
-		//  String accountnr, clientName,street,city,zip,state,accountType,clientType,amountDeposit;
-		
-		fileDao.saveToFileWithFileName(p,"test.txt");
+	//	PartyFactory pf=PartyFactory.getFactory(choice)
+	//	PartyFactory.getFactory(choice);
+	  //PersonInfo p=new PersonInfo(++tempCustomerId,"03/18/2018",clientName,street,city,state,zip,email);
+		Person person=new Person(++tempCustomerId,"03/18/2018",clientName,street,city,state,zip,email);	
+		Account personalAccount=new Saving(accountType,accountnr, person);
+	
 		if (newaccount){
             // add row to table
 			
             rowdata[0] = accountnr;
-            rowdata[1] = clientName;
-            rowdata[2] = city;
+            rowdata[1] = person.getName();
+            rowdata[2] = person.getCity();
             rowdata[3] = "P";
-            rowdata[4] = accountType;
+            rowdata[4] = personalAccount.getAccountType();
             rowdata[5] = "0";
             model.addRow(rowdata);
             JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
             newaccount=false;
-        }
-
-       
+        }      
         
     }
+	
 
 	void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event)
 	{
@@ -246,6 +262,8 @@ public class BankFrm extends javax.swing.JFrame
 		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
+		Organization ogranization=new Organization(++tempCustomerId,3,clientName,street,city,state,zip,email);
+		Account Companyaccount=new Saving(accountType,accountnr, ogranization);
 		
 		if (newaccount){
             // add row to table
@@ -273,14 +291,19 @@ public class BankFrm extends javax.swing.JFrame
 		    JDialog_Deposit dep = new JDialog_Deposit(myframe,accnr);
 		    dep.setBounds(430, 15, 275, 140);
 		    dep.show();
-		    
-    		
-		    // compute new amount
-            long deposit = Long.parseLong(amountDeposit);
-            String samount = (String)model.getValueAt(selection, 5);
-            long currentamount = Long.parseLong(samount);
-		    long newamount=currentamount+deposit;
-		    model.setValueAt(String.valueOf(newamount),selection, 5);
+		    String accNo = (String)model.getValueAt(selection, 0);
+		    String currentBalance = (String)model.getValueAt(selection, 5);
+		   //Strategy
+		    EntryContext depositContext=new EntryContext(new Deposit(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
+			Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
+			
+		//    Entry deposit=new Deposit(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d");
+		 		
+        //    long deposit1 = Long.parseLong(amountDeposit);
+            
+            //long currentamount = Long.parseLong(samount);
+		  //  long newamount=currentamount+deposit1;  
+		    model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
 		}
 		
 		
@@ -297,15 +320,16 @@ public class BankFrm extends javax.swing.JFrame
 		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accnr);
 		    wd.setBounds(430, 15, 275, 140);
 		    wd.show();
-    		
-		    // compute new amount
-            long deposit = Long.parseLong(amountDeposit);
-            String samount = (String)model.getValueAt(selection, 5);
-            long currentamount = Long.parseLong(samount);
-		    long newamount=currentamount-deposit;
-		    model.setValueAt(String.valueOf(newamount),selection, 5);
-		    if (newamount <0){
-		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
+   		    
+		    String accNo = (String)model.getValueAt(selection, 0);
+		    String currentBalance = (String)model.getValueAt(selection, 5);
+		   //Strategy
+		    EntryContext depositContext=new EntryContext(new Withdraw(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
+			Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
+
+		    model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
+		    if (returnedNewBalance <0){
+		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(returnedNewBalance)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
 		    }
 		}
 		
@@ -314,6 +338,10 @@ public class BankFrm extends javax.swing.JFrame
 	
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
+		//They Both need to change to factory or strategy to determin what kind of account they are
+		addInterestFunctor addFunctor=new addInterestFunctor();
+		new Saving().addInterest(addFunctor);//Functor
+		new Checking().addInterest(addFunctor);
 		  JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
 	    
 	}

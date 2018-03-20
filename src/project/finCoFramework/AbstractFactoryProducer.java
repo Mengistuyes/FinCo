@@ -6,17 +6,17 @@ public class AbstractFactoryProducer{
 		{
 			return new AccountFactory();
 		}
-		if(choice.equalsIgnoreCase("Party"))
-		{
-			return new PartyFactory();
-		}
+//		if(choice.equalsIgnoreCase("Party"))
+//		{
+//			return new PartyFactory();
+//		}
 		if(choice.equalsIgnoreCase("CreditCard"))
 		{
 			return new CreditCardFactory();
 		}
 		if(choice.equalsIgnoreCase("Entity"))
 		{
-			return new EntityFactory();
+			return new EntryFactory();
 		}
 
 		return null;

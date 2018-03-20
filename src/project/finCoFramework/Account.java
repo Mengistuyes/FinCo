@@ -2,7 +2,7 @@ package project.finCoFramework;
 
 import project.dao.fileDao;
 
-public abstract class Account implements IAccount {
+public abstract class Account<T, R> implements IAccount<T,R> {
 	//private Integer AccountNo;
 	private String AccountNo;
 	private static Integer accNo=0; 
@@ -82,6 +82,7 @@ public abstract class Account implements IAccount {
 	public void setAccountType(String accountType) {
 		AccountType = accountType;
 	}
-	
+	public abstract void addInterest(Functor<T,R> addInterestFunctor);
+	public abstract Double getBalance(IAccount account);
 
 }

@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import project.dao.fileDao;
 import project.finCoFramework.Account;
+import project.finCoFramework.Checking;
 import project.finCoFramework.Deposit;
 import project.finCoFramework.Entry;
 import project.finCoFramework.EntryContext;
@@ -20,6 +21,7 @@ import project.finCoFramework.Organization;
 import project.finCoFramework.Party;
 import project.finCoFramework.PartyFactory;
 import project.finCoFramework.Person;
+import project.finCoFramework.Saving;
 import project.finCoFramework.Withdraw;
 import project.finCoFramework.addInterestFunctor;
 
@@ -132,8 +134,8 @@ public class BankFrm extends javax.swing.JFrame
 		    
 			//Create a new instance of our application's frame, and make it visible.
 			(new BankFrm()).setVisible(true);
-			java.util.List<Account> accounts =fileDao.getAllAccounts();
-			java.util.List<Party> party =fileDao.getAllParty();
+//			java.util.List<Account> accounts =fileDao.getAllAccounts();
+//			java.util.List<Party> party =fileDao.getAllParty();
 			
 		} 
 		catch (Throwable t) {
@@ -296,13 +298,6 @@ public class BankFrm extends javax.swing.JFrame
 		   //Strategy
 		    EntryContext depositContext=new EntryContext(new Deposit(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
 			Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
-			
-		//    Entry deposit=new Deposit(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d");
-		 		
-        //    long deposit1 = Long.parseLong(amountDeposit);
-            
-            //long currentamount = Long.parseLong(samount);
-		  //  long newamount=currentamount+deposit1;  
 		    model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
 		}
 		

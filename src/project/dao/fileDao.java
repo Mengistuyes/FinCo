@@ -16,15 +16,15 @@ import java.util.UUID;
 
 import com.google.gson.Gson;
 
-import project.bank.Checking;
 import project.bank.PersonInfo;
-import project.bank.Saving;
 import project.finCoFramework.Account;
+import project.finCoFramework.Checking;
 import project.finCoFramework.Deposit;
 import project.finCoFramework.Entry;
 import project.finCoFramework.IAccount;
 import project.finCoFramework.Party;
 import project.finCoFramework.Person;
+import project.finCoFramework.Saving;
 import project.finCoFramework.Transfer;
 import project.finCoFramework.Withdraw;
 

@@ -38,6 +38,7 @@ public class Receiver {
 
     public void addInterest() {
         System.out.println("AddInterest");
+        createAccount.addInterest();
     }
 
     public void exit() {

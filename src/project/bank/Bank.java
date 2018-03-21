@@ -91,15 +91,19 @@ public class Bank extends AbstractFincoUi implements Observer {
     }
 
     @Override
-    public void update(Account account) {
-        Object[] rowData = new Object[8];
-        rowData[0] = account.getAccountNumber();
-        rowData[1] = account.getParty().getName();
-        rowData[2] = account.getParty().getCity();
-        rowData[3] = account.getParty().getTypeAccount();
-        rowData[4] = account.getAccountType();
-        rowData[5] = account.getBalance();
-        addRowModel(rowData);
+    public void update(List<Account> accountList) {
+        clearModel();
+        for (Account ac : accountList) {
+            Object[] rowData = new Object[8];
+            rowData[0] = ac.getAccountNumber();
+            rowData[1] = ac.getParty().getName();
+            rowData[2] = ac.getParty().getCity();
+            rowData[3] = ac.getParty().getTypeAccount();
+            rowData[4] = ac.getAccountType();
+            rowData[5] = ac.getBalance();
+            addRowModel(rowData);
+        }
+
 
     }
 }

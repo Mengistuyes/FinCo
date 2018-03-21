@@ -9,7 +9,7 @@ public interface ICreateAccount {
 
     void createAccount(Account account);
 
-    void addInterest(List<Account> accountList);
+    void addInterest();
 
     List<Account> getAllAccounts();
 }

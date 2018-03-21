@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface Observer {
 
-    void update(Account list);
+    void update(List<Account> list);
 }

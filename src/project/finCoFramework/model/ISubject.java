@@ -8,5 +8,5 @@ public interface ISubject {
 
     void removeSubscriberView(Observer object);
 
-    void notifyAllViews(Account account);
+    void notifyAllViews();
 }

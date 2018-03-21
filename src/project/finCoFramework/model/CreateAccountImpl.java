@@ -20,12 +20,12 @@ public class CreateAccountImpl implements ICreateAccount, ISubject {
     @Override
     public void createAccount(Account account) {
         fincoDao.addAccount(account);
-        notifyAllViews(account);
+        notifyAllViews();
     }
 
     @Override
-    public void addInterest(List<Account> accountList) {
-        for (IAccount account : accountList) {
+    public void addInterest() {
+        for (IAccount account : getAllAccounts()) {
             account.addInterest();
         }
     }
@@ -46,9 +46,9 @@ public class CreateAccountImpl implements ICreateAccount, ISubject {
     }
 
     @Override
-    public void notifyAllViews(Account account) {
+    public void notifyAllViews() {
         for (Observer ob : observerList) {
-            ob.update(account);
+            ob.update(getAllAccounts());
         }
     }
 }

@@ -91,6 +91,10 @@ public class AbstractFincoUi {
         table.getSelectionModel().setAnchorSelectionIndex(-1);
     }
 
+    public void clearModel(){
+        model.setRowCount(0);
+    }
+
     class SymWindow extends java.awt.event.WindowAdapter {
         public void windowClosing(WindowEvent event) {
             Object object = event.getSource();

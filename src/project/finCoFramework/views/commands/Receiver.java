@@ -7,7 +7,7 @@ import java.util.EventListener;
 public class Receiver {
 
     public void buttonExit(ActionEvent event) {
-        System.exit(0);
+
     }
 
     public void createAccount(ActionEvent event) {

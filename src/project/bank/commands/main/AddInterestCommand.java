@@ -1,21 +1,19 @@
-package project.bank.commands;
+package project.bank.commands.main;
 
-import project.finCoFramework.entry.Deposit;
+import project.bank.commands.Receiver;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class DepositCommand implements Command {
-
+public class AddInterestCommand implements Command{
 
     private Receiver receiver;
 
-    public DepositCommand(Receiver receiver) {
+    public AddInterestCommand(Receiver receiver){
         this.receiver = receiver;
     }
-
     @Override
     public void execute(ActionEvent actionEvent) {
-        receiver.createDepositView();
+        receiver.addInterest();
     }
 }

@@ -1,6 +1,7 @@
 package project.bank;
 
 import project.bank.commands.*;
+import project.bank.commands.main.*;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.commands.Command;
 
@@ -11,7 +12,7 @@ public class Bank extends AbstractFincoUi {
 
     public Bank() {
         setTitle("Bank Application");
-        setSize(510, 500);
+        setSize(600, 400);
         setVisibile(true);
 
         JButton personalAccount = new JButton();
@@ -58,12 +59,15 @@ public class Bank extends AbstractFincoUi {
         Command depositCommand = new DepositCommand(new Receiver(this));
         Command withdrawCommand = new WithdrawCommand(new Receiver(this));
         Command addInterestCommand = new AddInterestCommand(new Receiver(this));
+        Command exitCommand = new ExitCommand(new Receiver(this));
+
 
         addCommandClick(personalAccount, addPersonalAcCommand);
         addCommandClick(companyAccount, addAccountCommand);
         addCommandClick(deposit, depositCommand);
         addCommandClick(withdraw, withdrawCommand);
         addCommandClick(addInterest, addInterestCommand);
+        addCommandClick(exit, exitCommand);
 
         build();
     }

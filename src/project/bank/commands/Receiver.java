@@ -9,36 +9,35 @@ import project.finCoFramework.views.AbstractFincoUi;
 
 public class Receiver {
 
-    private static AbstractFincoUi abstractFincoUi;
+    private AbstractFincoUi abstractFincoUi;
 
     public Receiver(AbstractFincoUi abstractFincoUi) {
         this.abstractFincoUi = abstractFincoUi;
     }
 
     public void createPersonalAccount() {
-        PersonalAccountView personalAccountView = new PersonalAccountView(abstractFincoUi);
+        new PersonalAccountView(abstractFincoUi);
     }
 
     public void createCompanyAccount(){
-        CompanyAccountView companyAccountView = new CompanyAccountView(abstractFincoUi);
+        new CompanyAccountView(abstractFincoUi);
     }
 
     public void createDepositView(){
-        DepositView depositView = new DepositView(abstractFincoUi);
+       new DepositView(abstractFincoUi);
     }
 
     public void createWithdrawView(){
-        WithdrawView withdrawView = new WithdrawView(abstractFincoUi);
+      new WithdrawView(abstractFincoUi);
     }
 
     public void addInterest(){
         System.out.println("AddInterest");
     }
-    public void createAccount(IAccount account){
-
+    public void exit(){
+        System.exit(0);
     }
 
-    public void cancel(){
 
-    }
+
 }

@@ -1,11 +1,12 @@
-package project.finCoFramework.views;
+package project.finCoFramework;
 
+import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.commands.Receiver;
 import project.finCoFramework.views.commands.maincommands.DefaultTestCommand;
 
 import javax.swing.*;
 
-public class FincoFrameworkUi extends AbstractFincoUi{
+public class FincoFrameworkUi extends AbstractFincoUi {
 
 
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package project.bank.views;
 
-import project.bank.commands.CancelCommand;
-import project.bank.commands.OkCommand;
+import project.bank.commands.account.CancelCommand;
+import project.bank.commands.account.OkCommand;
 import project.bank.commands.Receiver;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;

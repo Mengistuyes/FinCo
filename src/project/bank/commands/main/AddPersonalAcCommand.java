@@ -1,5 +1,6 @@
-package project.bank.commands;
+package project.bank.commands.main;
 
+import project.bank.commands.Receiver;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;

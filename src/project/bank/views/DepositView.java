@@ -1,13 +1,9 @@
 package project.bank.views;
 
-import project.bank.commands.DepositCommand;
-import project.bank.commands.Receiver;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
-import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class DepositView {
 

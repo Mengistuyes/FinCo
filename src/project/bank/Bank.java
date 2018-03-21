@@ -2,12 +2,16 @@ package project.bank;
 
 import project.bank.commands.*;
 import project.bank.commands.main.*;
+import project.finCoFramework.account.Account;
+import project.finCoFramework.model.CreateAccountImpl;
+import project.finCoFramework.model.Observer;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
+import java.util.List;
 
-public class Bank extends AbstractFincoUi {
+public class Bank extends AbstractFincoUi implements Observer {
 
 
     public Bank() {
@@ -46,10 +50,9 @@ public class Bank extends AbstractFincoUi {
         addButtons(withdraw);
         addButtons(exit);
 
-        addColumns("Street");
+        addColumns("Account Number");
+        addColumns("Name");
         addColumns("City");
-        addColumns("State");
-        addColumns("Zip");
         addColumns("P/C");
         addColumns("Ch/S");
         addColumns("Amount");
@@ -69,6 +72,10 @@ public class Bank extends AbstractFincoUi {
         addCommandClick(addInterest, addInterestCommand);
         addCommandClick(exit, exitCommand);
 
+        //Registering for observer
+        CreateAccountImpl createAccount = new CreateAccountImpl();
+        createAccount.addSubscriberView(this);
+
         build();
     }
 
@@ -83,4 +90,16 @@ public class Bank extends AbstractFincoUi {
 
     }
 
+    @Override
+    public void update(Account account) {
+        Object[] rowData = new Object[8];
+        rowData[0] = account.getAccountNumber();
+        rowData[1] = account.getParty().getName();
+        rowData[2] = account.getParty().getCity();
+        rowData[3] = account.getParty().getTypeAccount();
+        rowData[4] = account.getAccountType();
+        rowData[5] = account.getBalance();
+        addRowModel(rowData);
+
+    }
 }

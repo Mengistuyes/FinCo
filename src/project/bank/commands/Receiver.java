@@ -4,6 +4,7 @@ import project.bank.views.CompanyAccountView;
 import project.bank.views.DepositView;
 import project.bank.views.PersonalAccountView;
 import project.bank.views.WithdrawView;
+import project.finCoFramework.account.Account;
 import project.finCoFramework.account.IAccount;
 import project.finCoFramework.model.CreateAccountImpl;
 import project.finCoFramework.model.ICreateAccount;
@@ -43,7 +44,7 @@ public class Receiver {
         System.exit(0);
     }
 
-    public void createAccount(IAccount account) {
+    public void createAccount(Account account) {
         createAccount.createAccount(account);
     }
 

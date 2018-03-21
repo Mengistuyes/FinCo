@@ -1,14 +1,36 @@
 package project.bank.views;
 
+import project.bank.commands.Receiver;
+import project.bank.commands.account.CancelCommand;
+import project.bank.commands.account.OkCommand;
+import project.finCoFramework.account.Account;
+import project.finCoFramework.account.Checking;
+import project.finCoFramework.account.Saving;
+import project.finCoFramework.party.Organization;
+import project.finCoFramework.party.Party;
+import project.finCoFramework.party.Person;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
+import project.finCoFramework.views.CommandView;
+import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
+import java.awt.event.MouseEvent;
 
-public class CompanyAccountView {
+public class CompanyAccountView implements CommandView {
 
     private AbstractPopUp abstractPopUp;
-
+    private JRadioButton radioButtonChecking = new JRadioButton();
+    private JRadioButton savingRadioButton = new JRadioButton();
+    private JTextField textAccount = new JTextField();
+    private JTextField textName = new JTextField();
+    private JTextField textCity = new JTextField();
+    private JTextField textState = new JTextField();
+    private JTextField textStreet = new JTextField();
+    private JTextField textZip= new JTextField();
+    private JTextField textNumberEmployees= new JTextField();
+    private JTextField textEmail = new JTextField();
+    private Account account = null;
 
     public CompanyAccountView(AbstractFincoUi abstractFincoUi) {
         abstractPopUp = new AbstractPopUp(abstractFincoUi);
@@ -17,19 +39,17 @@ public class CompanyAccountView {
 
 
         //Checking Radio Button
-        JRadioButton radioButtonChecking = new JRadioButton();
+
         radioButtonChecking.setText("Checkings");
         radioButtonChecking.setBounds(36,0,84,24);
 
         //Saving Radio Button
-        JRadioButton savingRadioButton = new JRadioButton();
+
         savingRadioButton.setText("Savings");
         savingRadioButton.setBounds(36,24,84,24);
 
 
 
-        JTextField textAccount = new JTextField();
-        textAccount.setBounds(84,60,156,20);
 
         JLabel accountLabel = new JLabel();
         accountLabel.setText("Acc Nr");
@@ -65,26 +85,13 @@ public class CompanyAccountView {
         email.setText("Email");
         email.setBounds(12, 228, 48, 24);
 
-        JTextField textName = new JTextField();
+        textAccount.setBounds(84,60,156,20);
         textName.setBounds(84,84,156,20);
-
-        JTextField textCity = new JTextField();
         textCity.setBounds(84,132,156,20);
-
-        JTextField textState = new JTextField();
         textState.setBounds(84,156,156,20);
-
-        JTextField textStreet = new JTextField();
         textStreet.setBounds(84,108,156,20);
-
-        JTextField textZip= new JTextField();
         textZip.setBounds(84,180,156,20);
-
-
-        JTextField textNumberEmployees= new JTextField();
         textNumberEmployees.setBounds(84,204,156,20);
-
-        JTextField textEmail = new JTextField();
         textEmail.setBounds(84,228,156,20);
 
 
@@ -97,6 +104,16 @@ public class CompanyAccountView {
         cancelButton.setText("Cancel");
         cancelButton.setBounds(156,264,84,24);
 
+
+        SymMouse mouse = new SymMouse();
+        radioButtonChecking.addMouseListener(mouse);
+        savingRadioButton.addMouseListener(mouse);
+
+        Command okCommand = new OkCommand(new Receiver(abstractFincoUi), this);
+        Command cancelCommand = new CancelCommand(new Receiver(abstractFincoUi), this);
+
+        abstractPopUp.addActionListener(okButton, okCommand);
+        abstractPopUp.addActionListener(cancelButton, cancelCommand);
 
         abstractPopUp.addComponents(cancelButton);
         abstractPopUp.addComponents(okButton);
@@ -124,4 +141,43 @@ public class CompanyAccountView {
         abstractPopUp.show();
         abstractPopUp.build();
     }
+
+    public Account getAccount() {
+        Party personalAccount = new Organization(Integer.parseInt(textNumberEmployees.getText()), textName.getText(),
+                textStreet.getText(), textCity.getText(), textState.getText(), textZip.getText(), textEmail.getText());
+
+        if (radioButtonChecking.isSelected()) {
+            account = new Checking("checking", textAccount.getText(), personalAccount);
+        }
+        if (savingRadioButton.isSelected()) {
+            account = new Saving("saving", textAccount.getText(), personalAccount);
+        }
+        return account;
+    }
+
+    @Override
+    public void close() {
+        abstractPopUp.close();
+    }
+
+    void radioCheckBoxClicked(MouseEvent event) {
+        radioButtonChecking.setSelected(true);
+        savingRadioButton.setSelected(false);
+    }
+
+    void radioSavingBoxClick(MouseEvent event) {
+        radioButtonChecking.setSelected(false);
+        savingRadioButton.setSelected(true);
+    }
+
+    class SymMouse extends java.awt.event.MouseAdapter {
+        public void mouseClicked(java.awt.event.MouseEvent event) {
+            Object object = event.getSource();
+            if (object == radioButtonChecking)
+                radioCheckBoxClicked(event);
+            else if (object == savingRadioButton)
+                radioSavingBoxClick(event);
+        }
+    }
 }
+

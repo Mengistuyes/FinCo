@@ -1,5 +1,6 @@
 package project.finCoFramework.model;
 
+import project.finCoFramework.account.Account;
 import project.finCoFramework.account.IAccount;
 
 public class EntryOperationImpl implements EntryOperation {
@@ -11,14 +12,14 @@ public class EntryOperationImpl implements EntryOperation {
     }
 
     @Override
-    public void deposit(IAccount account, String name, double amount) {
+    public void deposit(Account account, String name, double amount) {
         IAccount accounts = fincoDao.account(account);
         double balance = accounts.getBalance() + amount;
         account.setBalance(balance);
     }
 
     @Override
-    public void withdraw(IAccount account, String name, double amount) {
+    public void withdraw(Account account, String name, double amount) {
         IAccount accounts = fincoDao.account(account);
         double balance = accounts.getBalance() - amount;
         account.setBalance(balance);

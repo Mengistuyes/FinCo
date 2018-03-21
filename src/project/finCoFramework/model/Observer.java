@@ -5,11 +5,7 @@ import project.finCoFramework.account.IAccount;
 
 import java.util.List;
 
-public interface ICreateAccount {
+public interface Observer {
 
-    void createAccount(Account account);
-
-    void addInterest(List<Account> accountList);
-
-    List<Account> getAllAccounts();
+    void update(Account list);
 }

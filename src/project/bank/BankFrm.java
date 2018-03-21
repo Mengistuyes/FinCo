@@ -225,22 +225,22 @@ public class BankFrm extends javax.swing.JFrame
 //		pac.setBounds(450, 20, 300, 330);
 //		pac.show();
 
-		Person person=new Person(++tempCustomerId,"03/18/2018",clientName,street,city,state,zip,email);	
-		Account personalAccount=new Saving(accountType,accountnr, person);
+//		Person person=new Person(++tempCustomerId,"03/18/2018",clientName,street,city,state,zip,email);
+//		Account personalAccount=new Saving(accountType,accountnr, person);
 	
-		if (newaccount){
-            // add row to table
-			
-            rowdata[0] = accountnr;
-            rowdata[1] = person.getName();
-            rowdata[2] = person.getCity();
-            rowdata[3] = "P";
-            rowdata[4] = personalAccount.getAccountType();
-            rowdata[5] = "0";
-            model.addRow(rowdata);
-            JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
-            newaccount=false;
-        }      
+//		if (newaccount){
+//            // add row to table
+//
+//            rowdata[0] = accountnr;
+//            rowdata[1] = person.getName();
+//            rowdata[2] = person.getCity();
+//            rowdata[3] = "P";
+//            rowdata[4] = personalAccount.getAccountType();
+//            rowdata[5] = "0";
+//            model.addRow(rowdata);
+//            JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
+//            newaccount=false;
+//        }
         
     }
 	
@@ -256,9 +256,9 @@ public class BankFrm extends javax.swing.JFrame
 //		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
 //		pac.setBounds(450, 20, 300, 330);
 //		pac.show();
-		Organization ogranization=new Organization(++tempCustomerId,3,clientName,street,city,state,zip,email);
-		Account Companyaccount=new Saving(accountType,accountnr, ogranization);
-		
+//		Organization ogranization=new Organization(++tempCustomerId,3,clientName,street,city,state,zip,email);
+//		Account Companyaccount=new Saving(accountType,accountnr, ogranization);
+//
 		if (newaccount){
             // add row to table
             rowdata[0] = accountnr;

@@ -96,8 +96,10 @@ public class JDialog_AddPAcc extends JDialog
 	
 		//{{REGISTER_LISTENERS
 		SymMouse aSymMouse = new SymMouse();
+
 		JRadioButton_Chk.addMouseListener(aSymMouse);
 		JRadioButton_Sav.addMouseListener(aSymMouse);
+
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Cancel.addActionListener(lSymAction);

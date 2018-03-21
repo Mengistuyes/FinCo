@@ -86,6 +86,11 @@ public class AbstractFincoUi {
         buttonClick.put(jButton, command);
     }
 
+    public void addRowModel(Object[] objects) {
+        model.addRow(objects);
+        table.getSelectionModel().setAnchorSelectionIndex(-1);
+    }
+
     class SymWindow extends java.awt.event.WindowAdapter {
         public void windowClosing(WindowEvent event) {
             Object object = event.getSource();

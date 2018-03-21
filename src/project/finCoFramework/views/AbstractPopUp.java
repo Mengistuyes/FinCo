@@ -57,6 +57,10 @@ public class AbstractPopUp {
         }
     }
 
+    public void close(){
+        jDialog.dispose();
+    }
+
     public void commandAdapter(Object object, ActionEvent event) {
         Command command = commandMap.get(object);
         CommandInvoker commandInvoker = new CommandInvoker(command);

@@ -3,6 +3,8 @@ package project.bank.views;
 import project.bank.commands.account.CancelCommand;
 import project.bank.commands.account.OkCommand;
 import project.bank.commands.Receiver;
+import project.finCoFramework.account.Checking;
+import project.finCoFramework.party.Party;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
 import project.finCoFramework.views.commands.Command;
@@ -102,6 +104,7 @@ public class PersonalAccountView {
 
         abstractPopUp.addComponents(cancelButton);
         abstractPopUp.addComponents(okButton);
+
         abstractPopUp.addComponents(textName);
         abstractPopUp.addComponents(textCity);
         abstractPopUp.addComponents(textState);
@@ -122,7 +125,8 @@ public class PersonalAccountView {
         abstractPopUp.addComponents(radioButtonChecking);
         abstractPopUp.addComponents(savingRadioButton);
 
-        Command okCommand = new OkCommand(new Receiver(abstractFincoUi));
+
+        Command okCommand = new OkCommand(new Receiver(abstractFincoUi), new Checking());
         Command cancelCommand = new CancelCommand(new Receiver(abstractFincoUi));
         abstractPopUp.addActionListener(okButton, okCommand);
         abstractPopUp.addActionListener(cancelButton,cancelCommand);

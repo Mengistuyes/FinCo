@@ -9,7 +9,6 @@ public class CommandInvoker {
         this.command = command;
     }
 
-
     public void execute(ActionEvent actionEvent) {
         command.execute(actionEvent);
     }

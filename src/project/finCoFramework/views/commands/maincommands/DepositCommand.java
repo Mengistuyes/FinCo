@@ -1,16 +1,15 @@
 package project.finCoFramework.views.commands.maincommands;
 
-import project.bank.Deposit;
-import project.finCoFramework.views.Reciever;
+import project.finCoFramework.views.commands.Receiver;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
 public class DepositCommand implements Command {
 
-    private Reciever reciever;
+    private Receiver reciever;
 
-    public DepositCommand(Reciever reciever) {
+    public DepositCommand(Receiver reciever) {
         this.reciever = reciever;
     }
 

@@ -1,29 +1,19 @@
 package project.bank;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
-import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 
-import project.dao.fileDao;
-import project.finCoFramework.Account;
-import project.finCoFramework.Checking;
-import project.finCoFramework.Deposit;
-import project.finCoFramework.Entry;
-import project.finCoFramework.EntryContext;
-import project.finCoFramework.IAccount;
-import project.finCoFramework.IParty;
-import project.finCoFramework.IPerson;
-import project.finCoFramework.Organization;
-import project.finCoFramework.Party;
-import project.finCoFramework.PartyFactory;
-import project.finCoFramework.Person;
-import project.finCoFramework.Saving;
-import project.finCoFramework.Withdraw;
-import project.finCoFramework.addInterestFunctor;
+import project.finCoFramework.account.Account;
+import project.finCoFramework.account.Checking;
+import project.finCoFramework.entry.Deposit;
+import project.finCoFramework.entry.StrategyContext;
+import project.finCoFramework.party.Organization;
+import project.finCoFramework.party.Person;
+import project.finCoFramework.account.Saving;
+import project.finCoFramework.entry.Withdraw;
+import project.finCoFramework.util.AddInterestFunctor;
 
 /**
  * A basic JFC based application.
@@ -80,18 +70,24 @@ public class BankFrm extends javax.swing.JFrame
 		JButton_PerAC.setText("Add personal account");
 		JPanel1.add(JButton_PerAC);
 		JButton_PerAC.setBounds(24,20,192,33);
+
 		JButton_CompAC.setText("Add company account");
 		JButton_CompAC.setActionCommand("jbutton");
 		JPanel1.add(JButton_CompAC);
 		JButton_CompAC.setBounds(240,20,192,33);
+
 		JButton_Deposit.setText("Deposit");
 		JPanel1.add(JButton_Deposit);
 		JButton_Deposit.setBounds(468,104,96,33);
+
+
 		JButton_Withdraw.setText("Withdraw");
 		JPanel1.add(JButton_Withdraw);
+
 		JButton_Addinterest.setBounds(448,20,106,33);
 		JButton_Addinterest.setText("Add interest");
 		JPanel1.add(JButton_Addinterest);
+
 		JButton_Withdraw.setBounds(468,164,96,33);
 		JButton_Exit.setText("Exit");
 		JPanel1.add(JButton_Exit);
@@ -134,8 +130,8 @@ public class BankFrm extends javax.swing.JFrame
 		    
 			//Create a new instance of our application's frame, and make it visible.
 			(new BankFrm()).setVisible(true);
-//			java.util.List<Account> accounts =fileDao.getAllAccounts();
-//			java.util.List<Party> party =fileDao.getAllParty();
+//			java.util.List<Account> accounts =FincoDao.getAllAccounts();
+//			java.util.List<Party> party =FincoDao.getAllParty();
 			
 		} 
 		catch (Throwable t) {
@@ -225,14 +221,10 @@ public class BankFrm extends javax.swing.JFrame
 		 set the boundaries and show it 
 		*/
 		
-		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
-		pac.setBounds(450, 20, 300, 330);
-		pac.show();
-	//	Date d=new Date();
-		
-	//	PartyFactory pf=PartyFactory.getFactory(choice)
-	//	PartyFactory.getFactory(choice);
-	  //PersonInfo p=new PersonInfo(++tempCustomerId,"03/18/2018",clientName,street,city,state,zip,email);
+//		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
+//		pac.setBounds(450, 20, 300, 330);
+//		pac.show();
+
 		Person person=new Person(++tempCustomerId,"03/18/2018",clientName,street,city,state,zip,email);	
 		Account personalAccount=new Saving(accountType,accountnr, person);
 	
@@ -261,9 +253,9 @@ public class BankFrm extends javax.swing.JFrame
 		 show it 
 		*/
 		
-		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
-		pac.setBounds(450, 20, 300, 330);
-		pac.show();
+//		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
+//		pac.setBounds(450, 20, 300, 330);
+//		pac.show();
 		Organization ogranization=new Organization(++tempCustomerId,3,clientName,street,city,state,zip,email);
 		Account Companyaccount=new Saving(accountType,accountnr, ogranization);
 		
@@ -290,15 +282,15 @@ public class BankFrm extends javax.swing.JFrame
             String accnr = (String)model.getValueAt(selection, 0);
     	    
 		    //Show the dialog for adding deposit amount for the current mane
-		    JDialog_Deposit dep = new JDialog_Deposit(myframe,accnr);
-		    dep.setBounds(430, 15, 275, 140);
-		    dep.show();
+//		    JDialog_Deposit dep = new JDialog_Deposit(myframe,accnr);
+//		    dep.setBounds(430, 15, 275, 140);
+//		    dep.show();
 		    String accNo = (String)model.getValueAt(selection, 0);
 		    String currentBalance = (String)model.getValueAt(selection, 5);
 		   //Strategy
-		    EntryContext depositContext=new EntryContext(new Deposit(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
-			Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
-		    model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
+		    //StrategyContext depositContext=new StrategyContext(new Deposit(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
+			//Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
+		    //model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
 		}
 		
 		
@@ -312,20 +304,20 @@ public class BankFrm extends javax.swing.JFrame
             String accnr = (String)model.getValueAt(selection, 0);
 
 		    //Show the dialog for adding withdraw amount for the current mane
-		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accnr);
-		    wd.setBounds(430, 15, 275, 140);
-		    wd.show();
+//		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accnr);
+//		    wd.setBounds(430, 15, 275, 140);
+//		    wd.show();
    		    
 		    String accNo = (String)model.getValueAt(selection, 0);
 		    String currentBalance = (String)model.getValueAt(selection, 5);
 		   //Strategy
-		    EntryContext depositContext=new EntryContext(new Withdraw(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
-			Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
+		   // StrategyContext depositContext=new StrategyContext(new Withdraw(accNo,Double.parseDouble(amountDeposit), "03/18/2018", "d"));
+			//Double returnedNewBalance=depositContext.ExcuteStrategy(Double.parseDouble(currentBalance),Double.parseDouble(amountDeposit));
 
-		    model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
-		    if (returnedNewBalance <0){
-		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(returnedNewBalance)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
-		    }
+//		    model.setValueAt(String.valueOf(returnedNewBalance),selection, 5);
+//		    if (returnedNewBalance <0){
+//		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(returnedNewBalance)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
+//		    }
 		}
 		
 		
@@ -334,10 +326,10 @@ public class BankFrm extends javax.swing.JFrame
 	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
 	{
 		//They Both need to change to factory or strategy to determin what kind of account they are
-		addInterestFunctor addFunctor=new addInterestFunctor();
-		new Saving().addInterest(addFunctor);//Functor
-		new Checking().addInterest(addFunctor);
-		  JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
-	    
+//		AddInterestFunctor addFunctor=new AddInterestFunctor();
+//		new Saving().addInterest(addFunctor);//Functor
+//		new Checking().addInterest(addFunctor);
+//		  JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
+//
 	}
 }

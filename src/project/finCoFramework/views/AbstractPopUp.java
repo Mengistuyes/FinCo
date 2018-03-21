@@ -1,14 +1,16 @@
 package project.finCoFramework.views;
 
-import project.finCoFramework.views.ccard.JDialog_Deposit;
+
 import project.finCoFramework.views.commands.Command;
 import project.finCoFramework.views.commands.CommandInvoker;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AbstractPopUp{
+public class AbstractPopUp {
 
     private AbstractFincoUi abstractFincoUi;
     private JDialog jDialog;
@@ -39,6 +41,7 @@ public class AbstractPopUp{
     }
 
     public void addComponents(JComponent component) {
+        component.setForeground(Color.black);
         jDialog.getContentPane().add(component);
     }
 
@@ -50,17 +53,21 @@ public class AbstractPopUp{
     class SymAction implements java.awt.event.ActionListener {
         public void actionPerformed(java.awt.event.ActionEvent event) {
             Object object = event.getSource();
-            Command command = commandMap.get(object);
-            CommandInvoker commandInvoker = new CommandInvoker(command);
-            commandInvoker.execute(event);
+            commandAdapter(object, event);
         }
     }
 
-    public void setBounds(int x, int y, int width, int height){
-        jDialog.setBounds(x, y,width,height);
+    public void commandAdapter(Object object, ActionEvent event) {
+        Command command = commandMap.get(object);
+        CommandInvoker commandInvoker = new CommandInvoker(command);
+        commandInvoker.execute(event);
     }
 
-    public void show(){
+    public void setBounds(int x, int y, int width, int height) {
+        jDialog.setBounds(x, y, width, height);
+    }
+
+    public void show() {
         jDialog.show();
     }
 }

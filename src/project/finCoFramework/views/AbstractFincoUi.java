@@ -125,13 +125,13 @@ public class AbstractFincoUi {
             CommandInvoker commandInvoker = new CommandInvoker(command);
             commandInvoker.execute(event);
 
-            TransactionPopUp abstractPopUp = new TransactionPopUp(AbstractFincoUi.this);
+            //TransactionPopUp abstractPopUp = new TransactionPopUp(AbstractFincoUi.this);
 
 
         }
     }
 
-    private void setFeelAndView(){
+    private void setFeelAndView() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {

@@ -1,5 +1,6 @@
 package project.finCoFramework.views;
 
+import project.finCoFramework.views.commands.Receiver;
 import project.finCoFramework.views.commands.maincommands.DefaultTestCommand;
 
 import javax.swing.*;
@@ -18,8 +19,9 @@ public class FincoFrameworkUi extends AbstractFincoUi{
         JButton defaultButton = new JButton();
         defaultButton.setBounds(24, 20, 192, 33);
         defaultButton.setText("Add Personal Account");
+
         frameworkUi.addButtons(defaultButton);
-        frameworkUi.addCommandClick(defaultButton,new DefaultTestCommand());
+        frameworkUi.addCommandClick(defaultButton,new DefaultTestCommand(new Receiver()));
 
         //Adding the columns for framework fields
         frameworkUi.addColumns("1st Field");

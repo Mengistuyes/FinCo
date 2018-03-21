@@ -1,12 +1,14 @@
-package project.finCoFramework.views.commands.popcommands;
+package project.finCoFramework.views.commands.maincommands;
 
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class OkCommand implements Command {
+public class ExitCommand implements Command {
+
     @Override
     public void execute(ActionEvent actionEvent) {
-        System.out.println("Ok Button");
+        System.out.println("Button Clicked Test");
+
     }
 }

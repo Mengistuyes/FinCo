@@ -1,9 +1,8 @@
 package project.finCoFramework.account;
 
-import project.finCoFramework.util.Functor;
 import project.finCoFramework.party.Party;
 
-public abstract class Account implements IAccount{
+public abstract class Account implements IAccount {
 
     protected String accountNumber;
     protected Double balance;
@@ -11,7 +10,7 @@ public abstract class Account implements IAccount{
     protected Party party;
 
     public Account(String accountType, String accountNumber, Party party) {
-        this.balance = 0.0;
+        this.balance = 10.0;
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.party = party;

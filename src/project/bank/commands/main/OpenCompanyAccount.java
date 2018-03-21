@@ -5,15 +5,15 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class WithdrawCommand implements Command {
+public class OpenCompanyAccount implements Command {
 
     private Receiver receiver;
 
-    public WithdrawCommand(Receiver receiver){
+    public OpenCompanyAccount(Receiver receiver){
         this.receiver = receiver;
     }
     @Override
     public void execute(ActionEvent actionEvent) {
-        receiver.createWithdrawView();
+        receiver.createCompanyAccount();
     }
 }

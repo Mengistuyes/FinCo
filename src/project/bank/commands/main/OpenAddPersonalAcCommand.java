@@ -5,11 +5,11 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class AddPersonalAcCommand implements Command {
+public class OpenAddPersonalAcCommand implements Command {
 
     private Receiver reciever;
 
-    public AddPersonalAcCommand(Receiver reciever) {
+    public OpenAddPersonalAcCommand(Receiver reciever) {
         this.reciever = reciever;
     }
 

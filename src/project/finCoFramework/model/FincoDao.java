@@ -23,7 +23,7 @@ public class FincoDao {
         accountList.add(account);
     }
 
-    public List<Account> getAccountList(){
+    public List<Account> getAccountList() {
         return accountList;
     }
 
@@ -34,6 +34,19 @@ public class FincoDao {
             }
         }
         return null;
+    }
+
+    public void setAccountList(List<IAccount> accountList) {
+        accountList.clear();
+        accountList.addAll(accountList);
+    }
+
+    public Account getAccountById(int id) {
+        return accountList.get(id);
+    }
+
+    public void update(int id, Account account) {
+        accountList.set(id, account);
     }
 
 

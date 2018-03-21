@@ -5,6 +5,7 @@ import java.util.UUID;
 import project.finCoFramework.account.Account;
 
 public abstract class Entry implements IEntry {
+
     public Account account;
     public String entryId = UUID.randomUUID().toString();
 

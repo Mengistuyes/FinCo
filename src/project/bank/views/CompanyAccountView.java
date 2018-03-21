@@ -3,12 +3,11 @@ package project.bank.views;
 import project.bank.commands.Receiver;
 import project.bank.commands.account.CancelCommand;
 import project.bank.commands.account.OkCommand;
+import project.bank.model.SavingAccount;
 import project.finCoFramework.account.Account;
-import project.finCoFramework.account.Checking;
-import project.finCoFramework.account.Saving;
+import project.bank.model.CheckingAccount;
 import project.finCoFramework.party.Organization;
 import project.finCoFramework.party.Party;
-import project.finCoFramework.party.Person;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
 import project.finCoFramework.views.CommandView;
@@ -38,12 +37,12 @@ public class CompanyAccountView implements CommandView {
         abstractPopUp.setSize(500, 200);
 
 
-        //Checking Radio Button
+        //CheckingAccount Radio Button
 
         radioButtonChecking.setText("Checkings");
         radioButtonChecking.setBounds(36,0,84,24);
 
-        //Saving Radio Button
+        //SavingAccount Radio Button
 
         savingRadioButton.setText("Savings");
         savingRadioButton.setBounds(36,24,84,24);
@@ -147,10 +146,10 @@ public class CompanyAccountView implements CommandView {
                 textStreet.getText(), textCity.getText(), textState.getText(), textZip.getText(), textEmail.getText());
 
         if (radioButtonChecking.isSelected()) {
-            account = new Checking("checking", textAccount.getText(), personalAccount);
+            account = new CheckingAccount("checking", textAccount.getText(), personalAccount);
         }
         if (savingRadioButton.isSelected()) {
-            account = new Saving("saving", textAccount.getText(), personalAccount);
+            account = new SavingAccount("saving", textAccount.getText(), personalAccount);
         }
         return account;
     }

@@ -3,7 +3,6 @@ package project.finCoFramework.model;
 import com.sun.org.apache.bcel.internal.generic.ISUB;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.account.IAccount;
-import project.finCoFramework.util.Functor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +24,13 @@ public class CreateAccountImpl implements ICreateAccount, ISubject {
 
     @Override
     public void addInterest() {
+        List<IAccount> list = new ArrayList<>();
         for (IAccount account : getAllAccounts()) {
             account.addInterest();
+            list.add(account);
         }
+        fincoDao.setAccountList(list);
+        notifyAllViews();
     }
 
     @Override

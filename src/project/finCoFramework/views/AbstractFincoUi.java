@@ -91,7 +91,7 @@ public class AbstractFincoUi {
         table.getSelectionModel().setAnchorSelectionIndex(-1);
     }
 
-    public void clearModel(){
+    public void clearModel() {
         model.setRowCount(0);
     }
 
@@ -133,10 +133,6 @@ public class AbstractFincoUi {
             Command command = buttonClick.get(object);
             CommandInvoker commandInvoker = new CommandInvoker(command);
             commandInvoker.execute(event);
-
-            //TransactionPopUp abstractPopUp = new TransactionPopUp(AbstractFincoUi.this);
-
-
         }
     }
 
@@ -145,5 +141,9 @@ public class AbstractFincoUi {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
         }
+    }
+
+    public int getSelectedRow() {
+        return table.getSelectionModel().getMinSelectionIndex();
     }
 }

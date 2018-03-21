@@ -1,27 +1,24 @@
-package project.finCoFramework.account;
+package project.bank.model;
 
 
-import project.finCoFramework.util.Functor;
+import project.finCoFramework.account.Account;
 import project.finCoFramework.party.Party;
 
-public class Saving extends Account {
+public class SavingAccount extends Account {
 
-    private Double interestRate = 0.01;
-    private Functor functor;
+    private Double interestRate = 0.05;
 
-    public Saving() {
-        super();
-        functor = (interest_rate, Balance) -> null;
+    public SavingAccount() {
     }
 
-    public Saving(String AccountType, String accountnr, Party party) {
+    public SavingAccount(String AccountType, String accountnr, Party party) {
         super(AccountType, accountnr, party);
     }
 
 
     @Override
     public void addInterest() {
-        balance = functor.addInterest(interestRate, balance);
+        balance = balance + (balance * interestRate);
     }
 
     @Override

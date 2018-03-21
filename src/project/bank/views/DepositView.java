@@ -1,19 +1,30 @@
 package project.bank.views;
 
+import project.bank.commands.Receiver;
+import project.bank.commands.account.DepositOkCommand;
+import project.bank.commands.account.TransactionCancelCommand;
+import project.bank.commands.main.Transaction;
+import project.finCoFramework.account.Account;
+import project.finCoFramework.account.IAccount;
+import project.finCoFramework.model.FincoDao;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
+import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
 
-public class DepositView {
+public class DepositView implements Transaction {
 
     private AbstractPopUp abstractPopUp;
+    private FincoDao fincoDao;
+    private JTextField deposit = new JTextField();
 
-    public DepositView(AbstractFincoUi abstractFincoUi) {
+    public DepositView(AbstractFincoUi abstractFincoUi, int id) {
         abstractPopUp = new AbstractPopUp(abstractFincoUi);
         abstractPopUp.setTitle("Deposit");
         abstractPopUp.setSize(268, 100);
 
+        fincoDao = FincoDao.getInstance();
         JLabel accountLabel = new JLabel();
         accountLabel.setText("Acc Nr");
         accountLabel.setBounds(12, 12, 60, 24);
@@ -26,9 +37,11 @@ public class DepositView {
 
         JTextField account = new JTextField();
         account.setEditable(false);
+
+        Account account1 = fincoDao.getAccountById(id);
+        account.setText(account1.getAccountNumber());
         account.setBounds(84, 12, 144, 24);
 
-        JTextField deposit = new JTextField();
         deposit.setBounds(84, 48, 144, 24);
 
 
@@ -47,9 +60,26 @@ public class DepositView {
         abstractPopUp.addComponents(okButton);
         abstractPopUp.addComponents(cancelButton);
 
+        Receiver receiver = new Receiver(abstractFincoUi);
+        Command command = new DepositOkCommand(receiver, id, this);
+        abstractPopUp.addActionListener(okButton, command);
+
+        Command command1 = new TransactionCancelCommand(this);
+        abstractPopUp.addActionListener(cancelButton, command1);
 
         abstractPopUp.setBounds(450, 20, 300, 330);
         abstractPopUp.show();
         abstractPopUp.build();
+    }
+
+
+    @Override
+    public double getTransaction() {
+        return Double.parseDouble(deposit.getText());
+    }
+
+    @Override
+    public void close() {
+        abstractPopUp.close();
     }
 }

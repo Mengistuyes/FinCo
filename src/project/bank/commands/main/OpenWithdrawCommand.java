@@ -1,22 +1,19 @@
 package project.bank.commands.main;
 
 import project.bank.commands.Receiver;
-import project.finCoFramework.entry.Deposit;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class DepositCommand implements Command {
-
+public class OpenWithdrawCommand implements Command {
 
     private Receiver receiver;
 
-    public DepositCommand(Receiver receiver) {
+    public OpenWithdrawCommand(Receiver receiver){
         this.receiver = receiver;
     }
-
     @Override
     public void execute(ActionEvent actionEvent) {
-        receiver.createDepositView();
+        receiver.createWithdrawView();
     }
 }

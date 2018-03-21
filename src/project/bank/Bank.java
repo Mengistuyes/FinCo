@@ -4,6 +4,7 @@ import project.bank.commands.*;
 import project.bank.commands.main.*;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.model.CreateAccountImpl;
+import project.finCoFramework.model.EntryOperationImpl;
 import project.finCoFramework.model.Observer;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.commands.Command;
@@ -57,11 +58,11 @@ public class Bank extends AbstractFincoUi implements Observer {
         addColumns("Ch/S");
         addColumns("Amount");
 
-        Command addPersonalAcCommand = new AddPersonalAcCommand(new Receiver(this));
-        Command addAccountCommand = new AddCompanyAccount(new Receiver(this));
-        Command depositCommand = new DepositCommand(new Receiver(this));
-        Command withdrawCommand = new WithdrawCommand(new Receiver(this));
-        Command addInterestCommand = new AddInterestCommand(new Receiver(this));
+        Command addPersonalAcCommand = new OpenAddPersonalAcCommand(new Receiver(this));
+        Command addAccountCommand = new OpenCompanyAccount(new Receiver(this));
+        Command depositCommand = new OpenDepositCommand(new Receiver(this));
+        Command withdrawCommand = new OpenWithdrawCommand(new Receiver(this));
+        Command addInterestCommand = new OpenAddInterestCommand(new Receiver(this));
         Command exitCommand = new ExitCommand(new Receiver(this));
 
 
@@ -75,6 +76,9 @@ public class Bank extends AbstractFincoUi implements Observer {
         //Registering for observer
         CreateAccountImpl createAccount = new CreateAccountImpl();
         createAccount.addSubscriberView(this);
+
+        EntryOperationImpl entryOperation = new EntryOperationImpl();
+        entryOperation.addSubscriberView(this);
 
         build();
     }

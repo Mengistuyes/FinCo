@@ -5,6 +5,6 @@ import project.finCoFramework.account.IAccount;
 
 public interface EntryOperation {
 
-    void deposit(Account account, String name, double amount);
-    void withdraw(Account account, String name, double amount);
+    void deposit(int accountid, double amount);
+    void withdraw(int accountid, double amount);
 }

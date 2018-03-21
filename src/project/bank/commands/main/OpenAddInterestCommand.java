@@ -5,11 +5,11 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class AddInterestCommand implements Command {
+public class OpenAddInterestCommand implements Command {
 
     private Receiver receiver;
 
-    public AddInterestCommand(Receiver receiver) {
+    public OpenAddInterestCommand(Receiver receiver) {
         this.receiver = receiver;
     }
 

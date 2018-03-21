@@ -3,25 +3,48 @@ package project.finCoFramework.model;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.account.IAccount;
 
-public class EntryOperationImpl implements EntryOperation {
+import java.util.ArrayList;
+import java.util.List;
+
+public class EntryOperationImpl implements EntryOperation, ISubject {
 
     private FincoDao fincoDao;
+    private static List<Observer> observerList = new ArrayList<>();
 
     public EntryOperationImpl() {
         fincoDao = FincoDao.getInstance();
     }
 
     @Override
-    public void deposit(Account account, String name, double amount) {
-        IAccount accounts = fincoDao.account(account);
-        double balance = accounts.getBalance() + amount;
-        account.setBalance(balance);
+    public void deposit(int accountid, double amount) {
+        Account account = fincoDao.getAccountById(accountid);
+        account.setBalance(account.getBalance() + amount);
+        fincoDao.update(accountid, account);
+        notifyAllViews();
     }
 
     @Override
-    public void withdraw(Account account, String name, double amount) {
-        IAccount accounts = fincoDao.account(account);
-        double balance = accounts.getBalance() - amount;
-        account.setBalance(balance);
+    public void withdraw(int accountid, double amount) {
+        Account account = fincoDao.getAccountById(accountid);
+        account.setBalance(account.getBalance() - amount);
+        fincoDao.update(accountid, account);
+        notifyAllViews();
+    }
+
+    @Override
+    public void addSubscriberView(Observer object) {
+        observerList.add(object);
+    }
+
+    @Override
+    public void removeSubscriberView(Observer object) {
+        observerList.remove(object);
+    }
+
+    @Override
+    public void notifyAllViews() {
+        for (Observer ob : observerList) {
+            ob.update(fincoDao.getAccountList());
+        }
     }
 }

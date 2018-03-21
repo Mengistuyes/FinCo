@@ -6,18 +6,19 @@ import project.bank.views.PersonalAccountView;
 import project.bank.views.WithdrawView;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.account.IAccount;
-import project.finCoFramework.model.CreateAccountImpl;
-import project.finCoFramework.model.ICreateAccount;
+import project.finCoFramework.model.*;
 import project.finCoFramework.views.AbstractFincoUi;
 
 public class Receiver {
 
     private AbstractFincoUi abstractFincoUi;
     private ICreateAccount createAccount;
+    private EntryOperation entryOperation;
 
     public Receiver(AbstractFincoUi abstractFincoUi) {
         this.abstractFincoUi = abstractFincoUi;
         createAccount = new CreateAccountImpl();
+        entryOperation = new EntryOperationImpl();
     }
 
     public void createPersonalAccount() {
@@ -29,11 +30,11 @@ public class Receiver {
     }
 
     public void createDepositView() {
-        new DepositView(abstractFincoUi);
+        new DepositView(abstractFincoUi, abstractFincoUi.getSelectedRow());
     }
 
     public void createWithdrawView() {
-        new WithdrawView(abstractFincoUi);
+        new WithdrawView(abstractFincoUi, abstractFincoUi.getSelectedRow());
     }
 
     public void addInterest() {
@@ -47,6 +48,14 @@ public class Receiver {
 
     public void createAccount(Account account) {
         createAccount.createAccount(account);
+    }
+
+    public void depositAccount(int id, double sum) {
+        entryOperation.deposit(id, sum);
+    }
+
+    public void withdrawMoney(int id, double sum) {
+        entryOperation.withdraw(id, sum);
     }
 
 

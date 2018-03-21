@@ -32,9 +32,6 @@ public class SavingAccount extends Account {
         this.balance = amount;
     }
 
-    @Override
-    public boolean createAccount() {
-        return false;
-    }
+
 
 }

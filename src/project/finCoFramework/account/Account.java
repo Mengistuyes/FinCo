@@ -56,6 +56,4 @@ public abstract class Account implements IAccount {
     public abstract void addInterest();
 
 
-    public abstract boolean createAccount();
-
 }

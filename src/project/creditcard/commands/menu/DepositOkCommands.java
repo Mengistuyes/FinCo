@@ -1,24 +1,27 @@
-package project.bank.commands.account;
+package project.creditcard.commands.menu;
 
+import project.creditcard.commands.Receiver;
 import project.finCoFramework.entry.Transaction;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class WithDrawCommand implements Command {
+public class DepositOkCommands implements Command {
 
-    private project.bank.commands.Receiver receiver;
+    private Receiver receiver;
     private int id;
     private Transaction transaction;
 
-    public WithDrawCommand(project.bank.commands.Receiver receiver, int id, Transaction transaction){
+    public DepositOkCommands(Receiver receiver, int id, Transaction transaction){
         this.receiver = receiver;
         this.id = id;
         this.transaction = transaction;
     }
+
+
     @Override
     public void execute(ActionEvent actionEvent) {
-        receiver.withdrawMoney(id, transaction.getTransaction());
+        receiver.depositAccount(id, transaction.getTransaction());
         transaction.close();
     }
 }

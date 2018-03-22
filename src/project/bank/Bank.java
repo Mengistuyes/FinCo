@@ -16,7 +16,7 @@ public class Bank extends AbstractFincoUi implements Observer {
 
 
     public Bank() {
-        setTitle("Bank Application");
+        setTitle("CreditCard Application");
         setSize(600, 400);
         setVisibile(true);
 

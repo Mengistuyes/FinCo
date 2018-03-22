@@ -1,4 +1,7 @@
-package project.finCoFramework.party;
+package project.bank.model;
+
+import project.finCoFramework.party.IOrganization;
+import project.finCoFramework.party.Party;
 
 public class Organization extends Party implements IOrganization {
 

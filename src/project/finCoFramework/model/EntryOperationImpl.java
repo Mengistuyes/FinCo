@@ -17,9 +17,9 @@ public class EntryOperationImpl implements EntryOperation, ISubject {
 
     @Override
     public void deposit(int accountid, double amount) {
-        Account account = fincoDao.getAccountById(accountid);
-        account.setBalance(account.getBalance() + amount);
-        fincoDao.update(accountid, account);
+        Account accounts = fincoDao.getAccountById(accountid);
+        accounts.setBalance(accounts.getBalance() + amount);
+        fincoDao.update(accountid, accounts);
         notifyAllViews();
     }
 

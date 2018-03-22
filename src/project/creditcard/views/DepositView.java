@@ -1,10 +1,10 @@
-package project.bank.views;
+package project.creditcard.views;
 
-import project.bank.commands.Receiver;
-import project.bank.commands.account.TransactionCancelCommand;
-import project.bank.commands.account.WithDrawCommand;
-import project.finCoFramework.entry.Transaction;
+import project.creditcard.commands.Receiver;
+import project.creditcard.commands.menu.DepositOkCommands;
+import project.creditcard.commands.menu.TransactionCancelCo;
 import project.finCoFramework.account.Account;
+import project.finCoFramework.entry.Transaction;
 import project.finCoFramework.model.FincoDao;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
@@ -12,15 +12,14 @@ import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
 
-public class WithdrawView implements Transaction {
-
+public class DepositView implements Transaction {
     private AbstractPopUp abstractPopUp;
     private FincoDao fincoDao;
-    protected JTextField deposit = new JTextField();
+    private JTextField deposit = new JTextField();
 
-    public WithdrawView(AbstractFincoUi abstractFincoUi, int id) {
+    public DepositView(AbstractFincoUi abstractFincoUi, int id) {
         abstractPopUp = new AbstractPopUp(abstractFincoUi);
-        abstractPopUp.setTitle("Withdraw");
+        abstractPopUp.setTitle("Deposit");
         abstractPopUp.setSize(268, 100);
 
         fincoDao = FincoDao.getInstance();
@@ -36,12 +35,13 @@ public class WithdrawView implements Transaction {
 
         JTextField account = new JTextField();
         account.setEditable(false);
+
+        Account account1 = fincoDao.getAccountById(id);
+        account.setText(account1.getAccountNumber());
         account.setBounds(84, 12, 144, 24);
 
         deposit.setBounds(84, 48, 144, 24);
 
-        Account account1 = fincoDao.getAccountById(id);
-        account.setText(account1.getAccountNumber());
 
         JButton okButton = new JButton();
         okButton.setText("OK");
@@ -59,17 +59,17 @@ public class WithdrawView implements Transaction {
         abstractPopUp.addComponents(cancelButton);
 
         Receiver receiver = new Receiver(abstractFincoUi);
+        Command command = new DepositOkCommands(receiver, id, this);
+        abstractPopUp.addActionListener(okButton, command);
 
-        Command withDrawCommand = new WithDrawCommand(receiver, id, this);
-        abstractPopUp.addActionListener(okButton, withDrawCommand);
-        Command cancelCommand = new TransactionCancelCommand(this);
-        abstractPopUp.addActionListener(cancelButton, cancelCommand);
-
+        Command command1 = new TransactionCancelCo(this);
+        abstractPopUp.addActionListener(cancelButton, command1);
 
         abstractPopUp.setBounds(450, 20, 300, 330);
         abstractPopUp.show();
         abstractPopUp.build();
     }
+
 
     @Override
     public double getTransaction() {

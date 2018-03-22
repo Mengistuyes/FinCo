@@ -20,6 +20,15 @@ public abstract class Account implements IAccount {
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public void setBalance(double amount) {
+        this.balance = amount;
+    }
+
+    @Override
+    public Double getBalance() {
+        return balance;
+    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -27,14 +36,6 @@ public abstract class Account implements IAccount {
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
     }
 
     public String getAccountType() {

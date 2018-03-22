@@ -1,4 +1,7 @@
-package project.finCoFramework.party;
+package project.bank.model;
+
+import project.finCoFramework.party.IPerson;
+import project.finCoFramework.party.Party;
 
 public class Person extends Party implements IPerson {
     protected String birthDate;

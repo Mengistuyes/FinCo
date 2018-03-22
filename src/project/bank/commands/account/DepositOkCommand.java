@@ -1,6 +1,6 @@
 package project.bank.commands.account;
 
-import project.bank.commands.main.Transaction;
+import project.finCoFramework.entry.Transaction;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;

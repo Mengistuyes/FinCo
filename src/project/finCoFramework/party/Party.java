@@ -11,7 +11,7 @@ public abstract class Party implements IParty {
     protected String zip;
     protected String email;
 
-    Party(String name, String street, String city, String state, String zip, String email) {
+    public Party(String name, String street, String city, String state, String zip, String email) {
         this.name = name;
         this.street = street;
         this.city = city;

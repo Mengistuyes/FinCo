@@ -1,4 +1,4 @@
-package project.bank.commands.main;
+package project.finCoFramework.entry;
 
 public interface Transaction {
     double getTransaction();

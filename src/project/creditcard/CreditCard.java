@@ -1,7 +1,5 @@
 package project.creditcard;
 
-import project.bank.commands.Receiver;
-import project.bank.commands.main.*;
 import project.creditcard.commands.ExitCommand;
 import project.creditcard.commands.OpenCreditAccountCommand;
 import project.creditcard.commands.OpenDepositCommand;

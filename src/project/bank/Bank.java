@@ -1,6 +1,6 @@
 package project.bank;
 
-import project.bank.commands.*;
+import project.bank.commands.account.Receiver;
 import project.bank.commands.main.*;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.model.CreateAccountImpl;

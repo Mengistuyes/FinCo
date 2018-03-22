@@ -1,4 +1,4 @@
-package project.bank.commands;
+package project.bank.commands.account;
 
 import project.bank.views.CompanyAccountView;
 import project.bank.views.DepositView;

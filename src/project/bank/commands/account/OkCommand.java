@@ -1,11 +1,5 @@
 package project.bank.commands.account;
 
-import project.bank.commands.Receiver;
-import project.bank.views.PersonalAccountView;
-import project.finCoFramework.account.IAccount;
-import project.finCoFramework.model.CreateAccountImpl;
-import project.finCoFramework.model.ICreateAccount;
-import project.finCoFramework.views.AbstractPopUp;
 import project.finCoFramework.views.CommandView;
 import project.finCoFramework.views.commands.Command;
 

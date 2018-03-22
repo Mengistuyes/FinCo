@@ -1,7 +1,6 @@
 package project.bank.commands.main;
 
-import com.sun.org.apache.regexp.internal.RE;
-import project.bank.commands.Receiver;
+import project.bank.commands.account.Receiver;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;

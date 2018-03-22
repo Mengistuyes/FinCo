@@ -2,7 +2,7 @@ package project.bank.views;
 
 import project.bank.commands.account.CancelCommand;
 import project.bank.commands.account.OkCommand;
-import project.bank.commands.Receiver;
+import project.bank.commands.account.Receiver;
 import project.bank.model.CheckingAccount;
 import project.bank.model.SavingAccount;
 import project.finCoFramework.account.Account;

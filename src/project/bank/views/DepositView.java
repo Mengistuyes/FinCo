@@ -1,6 +1,6 @@
 package project.bank.views;
 
-import project.bank.commands.Receiver;
+import project.bank.commands.account.Receiver;
 import project.bank.commands.account.DepositOkCommand;
 import project.bank.commands.account.TransactionCancelCommand;
 import project.finCoFramework.entry.Transaction;

@@ -1,6 +1,5 @@
 package project.creditcard.commands.menu;
 
-import project.bank.commands.Receiver;
 import project.finCoFramework.views.CommandView;
 import project.finCoFramework.views.commands.Command;
 

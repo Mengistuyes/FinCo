@@ -1,15 +1,14 @@
 package project.bank.commands.account;
 
-import project.finCoFramework.entry.Transaction;
-import project.finCoFramework.views.commands.Command;
+import project.finCoFramework.entry.EntryCommandInterface;
 
 import java.awt.event.ActionEvent;
 
 public class TransactionCancelCommand extends AbstractCommand{
 
-    private Transaction transaction;
+    private EntryCommandInterface transaction;
 
-    public TransactionCancelCommand(Transaction transaction){
+    public TransactionCancelCommand(EntryCommandInterface transaction){
         this.transaction = transaction;
     }
 

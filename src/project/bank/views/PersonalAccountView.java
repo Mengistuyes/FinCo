@@ -7,7 +7,7 @@ import project.bank.model.CheckingAccount;
 import project.bank.model.SavingAccount;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.party.Party;
-import project.bank.model.Person;
+import project.finCoFramework.party.Person;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
 import project.finCoFramework.views.CommandView;

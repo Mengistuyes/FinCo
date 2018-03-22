@@ -6,7 +6,7 @@ import project.bank.commands.account.OkCommand;
 import project.bank.model.SavingAccount;
 import project.finCoFramework.account.Account;
 import project.bank.model.CheckingAccount;
-import project.bank.model.Organization;
+import project.finCoFramework.party.Organization;
 import project.finCoFramework.party.Party;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;

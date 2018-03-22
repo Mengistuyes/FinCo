@@ -1,6 +1,5 @@
 package project.creditcard.views;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import project.creditcard.commands.Receiver;
 import project.creditcard.commands.menu.CancelCommand;
 import project.creditcard.commands.menu.OkAddCreditCommand;
@@ -10,7 +9,6 @@ import project.creditcard.model.GoldAccount;
 import project.creditcard.model.SilverAccount;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.party.Party;
-import project.bank.model.Person;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
 import project.finCoFramework.views.CommandView;

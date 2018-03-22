@@ -1,13 +1,15 @@
 package project.finCoFramework.views;
 
+import project.finCoFramework.account.Account;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class TransactionPopUp {
+public class EntryPopUp implements CommandView{
 
     private AbstractPopUp abstractPopUp;
 
-    public TransactionPopUp(AbstractFincoUi abstractFincoUi) {
+    public EntryPopUp(AbstractFincoUi abstractFincoUi) {
         abstractPopUp = new AbstractPopUp(abstractFincoUi);
         abstractPopUp.setTitle("Default Transaction Title");
         abstractPopUp.setSize(268, 126);
@@ -27,6 +29,13 @@ public class TransactionPopUp {
     }
 
 
+    @Override
+    public Account getAccount() {
+        return null;
+    }
 
+    @Override
+    public void close() {
 
+    }
 }

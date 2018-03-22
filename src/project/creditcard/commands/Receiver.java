@@ -4,8 +4,8 @@ import project.creditcard.views.CreditCardView;
 import project.creditcard.views.DepositView;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.model.CreateAccountImpl;
-import project.finCoFramework.model.EntryOperation;
-import project.finCoFramework.model.EntryOperationImpl;
+import project.finCoFramework.model.IEntry;
+import project.finCoFramework.model.Entry;
 import project.finCoFramework.model.ICreateAccount;
 import project.finCoFramework.views.AbstractFincoUi;
 
@@ -13,12 +13,12 @@ public class Receiver {
 
     private AbstractFincoUi abstractFincoUi;
     private ICreateAccount createAccount;
-    private EntryOperation entryOperation;
+    private IEntry entryOperation;
 
     public Receiver(AbstractFincoUi abstractFincoUi){
         this.abstractFincoUi = abstractFincoUi;
         this.createAccount = new CreateAccountImpl();
-        this.entryOperation = new EntryOperationImpl();
+        this.entryOperation = new Entry();
     }
     public void openCreditCard(){
         new CreditCardView(abstractFincoUi);

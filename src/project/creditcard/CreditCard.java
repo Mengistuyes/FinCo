@@ -5,7 +5,7 @@ import project.creditcard.commands.OpenCreditAccountCommand;
 import project.creditcard.commands.OpenDepositCommand;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.model.CreateAccountImpl;
-import project.finCoFramework.model.EntryOperationImpl;
+import project.finCoFramework.model.Entry;
 import project.finCoFramework.model.Observer;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.commands.Command;
@@ -70,7 +70,7 @@ public class CreditCard extends AbstractFincoUi implements Observer {
         CreateAccountImpl createAccount = new CreateAccountImpl();
         createAccount.addSubscriberView(this);
 
-        EntryOperationImpl entryOperation = new EntryOperationImpl();
+        Entry entryOperation = new Entry();
         entryOperation.addSubscriberView(this);
         build();
     }

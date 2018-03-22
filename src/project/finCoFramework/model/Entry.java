@@ -1,17 +1,16 @@
 package project.finCoFramework.model;
 
 import project.finCoFramework.account.Account;
-import project.finCoFramework.account.IAccount;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntryOperationImpl implements EntryOperation, ISubject {
+public class Entry implements IEntry, ISubject {
 
     private FincoDao fincoDao;
     private static List<Observer> observerList = new ArrayList<>();
 
-    public EntryOperationImpl() {
+    public Entry() {
         fincoDao = FincoDao.getInstance();
     }
 

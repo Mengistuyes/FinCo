@@ -5,7 +5,6 @@ import project.bank.views.DepositView;
 import project.bank.views.PersonalAccountView;
 import project.bank.views.WithdrawView;
 import project.finCoFramework.account.Account;
-import project.finCoFramework.account.IAccount;
 import project.finCoFramework.model.*;
 import project.finCoFramework.views.AbstractFincoUi;
 
@@ -13,12 +12,12 @@ public class Receiver {
 
     private AbstractFincoUi abstractFincoUi;
     private ICreateAccount createAccount;
-    private EntryOperation entryOperation;
+    private IEntry entryOperation;
 
     public Receiver(AbstractFincoUi abstractFincoUi) {
         this.abstractFincoUi = abstractFincoUi;
         createAccount = new CreateAccountImpl();
-        entryOperation = new EntryOperationImpl();
+        entryOperation = new Entry();
     }
 
     public void createPersonalAccount() {

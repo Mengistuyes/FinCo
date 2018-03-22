@@ -1,4 +1,4 @@
-package project.bank.model;
+package project.finCoFramework.party;
 
 import project.finCoFramework.party.IOrganization;
 import project.finCoFramework.party.Party;

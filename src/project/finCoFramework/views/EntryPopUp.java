@@ -11,7 +11,7 @@ public class EntryPopUp implements CommandView{
 
     public EntryPopUp(AbstractFincoUi abstractFincoUi) {
         abstractPopUp = new AbstractPopUp(abstractFincoUi);
-        abstractPopUp.setTitle("Default EntryCommandInterface Title");
+        abstractPopUp.setTitle("Default EntryCommand Title");
         abstractPopUp.setSize(268, 126);
 
         //Adding label for our abstract Pop Up

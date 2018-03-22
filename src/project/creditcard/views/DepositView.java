@@ -4,7 +4,7 @@ import project.creditcard.commands.Receiver;
 import project.creditcard.commands.menu.DepositOkCommands;
 import project.creditcard.commands.menu.TransactionCancelCo;
 import project.finCoFramework.account.Account;
-import project.finCoFramework.entry.EntryCommandInterface;
+import project.finCoFramework.entry.EntryCommand;
 import project.finCoFramework.model.FincoDao;
 import project.finCoFramework.views.AbstractFincoUi;
 import project.finCoFramework.views.AbstractPopUp;
@@ -12,7 +12,7 @@ import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
 
-public class DepositView implements EntryCommandInterface {
+public class DepositView implements EntryCommand {
     private AbstractPopUp abstractPopUp;
     private FincoDao fincoDao;
     private JTextField deposit = new JTextField();

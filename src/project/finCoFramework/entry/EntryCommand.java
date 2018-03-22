@@ -1,6 +1,6 @@
 package project.finCoFramework.entry;
 
-public interface EntryCommandInterface {
+public interface EntryCommand {
     double getTransaction();
 
     void close();

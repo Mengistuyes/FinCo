@@ -1,6 +1,6 @@
 package project.bank.commands.account;
 
-import project.finCoFramework.entry.EntryCommandInterface;
+import project.finCoFramework.entry.EntryCommand;
 
 import java.awt.event.ActionEvent;
 
@@ -8,9 +8,9 @@ public class WithDrawCommand extends AbstractCommand {
 
     private Receiver receiver;
     private int id;
-    private EntryCommandInterface transaction;
+    private EntryCommand transaction;
 
-    public WithDrawCommand(Receiver receiver, int id, EntryCommandInterface transaction){
+    public WithDrawCommand(Receiver receiver, int id, EntryCommand transaction){
         this.receiver = receiver;
         this.id = id;
         this.transaction = transaction;

@@ -3,7 +3,7 @@ package project.bank.views;
 import project.bank.commands.account.Receiver;
 import project.bank.commands.account.DepositOkCommand;
 import project.bank.commands.account.TransactionCancelCommand;
-import project.finCoFramework.entry.EntryCommandInterface;
+import project.finCoFramework.entry.EntryCommand;
 import project.finCoFramework.account.Account;
 import project.finCoFramework.model.FincoDao;
 import project.finCoFramework.views.AbstractFincoUi;
@@ -12,7 +12,7 @@ import project.finCoFramework.views.commands.Command;
 
 import javax.swing.*;
 
-public class DepositView implements EntryCommandInterface {
+public class DepositView implements EntryCommand {
 
     private AbstractPopUp abstractPopUp;
     private FincoDao fincoDao;

@@ -1,11 +1,12 @@
 package project.bank.commands.main;
 
+import project.bank.commands.account.AbstractCommand;
 import project.bank.commands.account.Receiver;
 import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class OpenAddInterestCommand implements Command {
+public class OpenAddInterestCommand extends AbstractCommand {
 
     private Receiver receiver;
 

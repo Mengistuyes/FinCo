@@ -5,7 +5,7 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class TransactionCancelCommand implements Command{
+public class TransactionCancelCommand extends AbstractCommand{
 
     private Transaction transaction;
 

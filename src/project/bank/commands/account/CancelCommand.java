@@ -5,7 +5,7 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class CancelCommand implements Command {
+public class CancelCommand extends AbstractCommand {
 
     private Receiver receiver;
     private CommandView commandView;

@@ -5,7 +5,7 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class OkCommand implements Command {
+public class OkCommand extends AbstractCommand {
     private Receiver receiver;
     private CommandView abstractPopUp;
 

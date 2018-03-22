@@ -5,7 +5,7 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class WithDrawCommand implements Command {
+public class WithDrawCommand extends AbstractCommand {
 
     private Receiver receiver;
     private int id;

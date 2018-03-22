@@ -5,7 +5,7 @@ import project.finCoFramework.views.commands.Command;
 
 import java.awt.event.ActionEvent;
 
-public class DepositOkCommand implements Command {
+public class DepositOkCommand extends AbstractCommand{
 
    private Receiver receiver;
    private int id;
